@@ -1,79 +1,43 @@
-<div class="container">
-  <h1>PLACARES EXATOS FIFA</h1>
-  <h2>Jogos Garantidos • Método Profissional</h2>
-  <div class="badge">⚠️ VIP FECHANDO VAGAS</div>
-
-  <div class="icons">🎮 ⚽️ 💰</div>
-
-  <div class="card">
-    <div class="stats">
-      <div class="stat">👥 1.370 membros ativos</div>
-      <div class="stat">💵 R$ 2.100 média mensal</div>
-    </div>
-    <div class="countdown">
-      Inscrições encerram em <span id="timer">15:00</span>
-    </div>
-  </div>
-
-  <div class="card vip">
-    <h3>VIP — ACESSO LIMITADO</h3>
-    <p>Entradas prioritárias • Gestão profissional • Alta precisão</p>
-    <div class="vagas">Vagas restantes: <strong id="vagas">7</strong></div>
-  </div>
-
-  <div class="card">
-    <strong>📢 Pessoas entrando agora</strong>
-    <div class="ticker" id="ticker"></div>
-  </div>
-
-  <div class="card">
-    <strong>✔️ Funciona nas principais plataformas</strong>
-    <div class="platforms">
-      <div class="platform">Bet365</div>
-      <div class="platform">Betano</div>
-    </div>
-  </div>
-
-  <a class="btn" href="https://t.me/+30Y1fI0TdrRiNzlh" target="_blank">
-    ENTRAR NO GRUPO DO TELEGRAM
+🚀 ENTRAR NO GRUPO DO TELEGRAM
   </a>
 
-  <footer>© Placares Exatos FIFA • Conteúdo informativo</footer>
+  <div class="footer">
+    Resultados variam conforme gestão e disciplina individual.
+  </div>
+
 </div>
 
-<script>
-// 🔊 SOM DISCRETO
-const sound = new Audio("https://assets.mixkit.co/sfx/preview/mixkit-positive-notification-951.mp3");
-sound.volume = 0.25;
+<div class="popup" id="popup"></div>
 
-// ⏱️ CONTADOR
-let time = 15 * 60;
+<script>
+let membros=0,lucro=0;
 setInterval(()=>{
-  let m = Math.floor(time / 60);
-  let s = time % 60;
-  document.getElementById("timer").innerText = ${m}:${s<10?'0'+s:s};
-  if(time>0) time--;
+  membros+=Math.floor(Math.random()*5)+1;
+  lucro+=Math.floor(Math.random()*40)+10;
+  document.getElementById("membros").innerText=membros;
+  document.getElementById("lucro").innerText="R$ "+lucro;
+},1200);
+
+let tempo=15*60;
+setInterval(()=>{
+  let m=Math.floor(tempo/60),s=tempo%60;
+  document.getElementById("countdown").innerText=
+  String(m).padStart(2,'0')+":"+String(s).padStart(2,'0');
+  if(tempo>0)tempo--;
 },1000);
 
-// 👥 ENTRADAS + VAGAS
-let vagas = 7;
-const nomes=["Rafael","Lucas","André","Carlos","Bruno","Diego","Felipe","Matheus","João","Pedro","Renato","Igor"];
-const estados=["SP","RJ","MG","PR","RS","BA","SC","PE","CE","GO"];
-const ticker=document.getElementById("ticker");
+const nomes=["Carlos","Lucas","Rafael","Bruno","Igor","Renato","Felipe","Matheus"];
+const estados=["SP","RJ","MG","PR","BA","RS"];
 
 setInterval(()=>{
-  const div=document.createElement("div");
-  div.className="entry";
-  div.innerText=`✅ ${nomes[Math.floor(Math.random()*nomes.length)]} (${estados[Math.floor(Math.random()*estados.length)])} entrou agora`;
-  ticker.prepend(div);
-  sound.currentTime=0; sound.play().catch(()=>{});
-  if(ticker.children.length>7) ticker.removeChild(ticker.lastChild);
-
-  if(vagas>1 && Math.random()>.5){
-    vagas--;
-    document.getElementById("vagas").innerText=vagas;
-  }
-},1700);
+  let n=nomes[Math.floor(Math.random()*nomes.length)];
+  let e=estados[Math.floor(Math.random()*estados.length)];
+  let p=document.getElementById("popup");
+  p.innerText=`🔥 ${n} (${e}) entrou agora`;
+  p.style.display="block";
+  setTimeout(()=>p.style.display="none",3500);
+},3000);
 </script>
+
 </body>
 </html>

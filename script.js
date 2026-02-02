@@ -1,29 +1,39 @@
-// TIMER
-let time = 15 * 60;
-const timerEl = document.getElementById("timer");
+// SOM VIP
+window.addEventListener("click", () => {
+  const sound = document.getElementById("vipSound");
+  if (sound) sound.play();
+}, { once: true });
+
+// CONTADOR
+let membros = 0;
+let lucro = 0;
 
 setInterval(() => {
-  let minutes = Math.floor(time / 60);
-  let seconds = time % 60;
+  membros += Math.floor(Math.random() * 5) + 1;
+  lucro += Math.floor(Math.random() * 40) + 20;
+  document.getElementById("membros").innerText = membros;
+  document.getElementById("lucro").innerText = "R$ " + lucro;
+}, 1200);
 
-  timerEl.textContent =
-    ${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')};
-
-  if (time > 0) time--;
+// CONTAGEM REGRESSIVA
+let tempo = 15 * 60;
+setInterval(() => {
+  let m = Math.floor(tempo / 60);
+  let s = tempo % 60;
+  document.getElementById("countdown").innerText =
+    String(m).padStart(2,'0') + ":" + String(s).padStart(2,'0');
+  if (tempo > 0) tempo--;
 }, 1000);
 
-// PROVA SOCIAL
-const entries = [
-  "🔥 Carlos (SP) entrou agora",
-  "✅ Lucas (PR) se inscreveu",
-  "⚽️ Rafael (RJ) entrou no canal",
-  "💰 André (BA) acabou de entrar",
-  "🚀 Bruno (MG) entrou agora"
-];
-
-const entryBox = document.getElementById("entryBox");
+// POPUPS INTENSOS
+const nomes = ["Carlos","Lucas","Rafael","Bruno","Igor","Felipe","Renato","Matheus"];
+const estados = ["SP","RJ","MG","PR","BA","RS"];
 
 setInterval(() => {
-  const random = entries[Math.floor(Math.random() * entries.length)];
-  entryBox.textContent = random;
-}, 3500);
+  const popup = document.getElementById("popup");
+  const nome = nomes[Math.floor(Math.random()*nomes.length)];
+  const estado = estados[Math.floor(Math.random()*estados.length)];
+  popup.innerText = 🔥 ${nome} (${estado}) entrou agora;
+  popup.style.display = "block";
+  setTimeout(() => popup.style.display = "none", 3500);
+}, 2500);

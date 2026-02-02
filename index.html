@@ -1,109 +1,79 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <title>Placares Exatos FIFA | Jogos Garantidos</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<div class="container">
+  <h1>PLACARES EXATOS FIFA</h1>
+  <h2>Jogos Garantidos • Método Profissional</h2>
+  <div class="badge">⚠️ VIP FECHANDO VAGAS</div>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: linear-gradient(135deg, #000000, #1a1a1a, #000000);
-      color: #fff;
-      text-align: center;
-    }
+  <div class="icons">🎮 ⚽️ 💰</div>
 
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 40px 20px;
-    }
-
-    h1 {
-      color: gold;
-      font-size: 42px;
-      margin-bottom: 10px;
-    }
-
-    h2 {
-      font-weight: normal;
-      color: #ccc;
-      margin-bottom: 30px;
-    }
-
-    .card {
-      background: rgba(255, 215, 0, 0.08);
-      border: 1px solid gold;
-      border-radius: 12px;
-      padding: 25px;
-      margin: 20px 0;
-    }
-
-    .members {
-      font-size: 18px;
-      margin-top: 15px;
-      color: #9cff9c;
-    }
-
-    .ticker {
-      margin-top: 30px;
-      font-size: 15px;
-      color: #ccc;
-    }
-
-    .btn {
-      display: inline-block;
-      margin-top: 40px;
-      padding: 18px 35px;
-      background: gold;
-      color: black;
-      text-decoration: none;
-      font-size: 20px;
-      font-weight: bold;
-      border-radius: 50px;
-      transition: 0.3s;
-    }
-
-    .btn:hover {
-      background: #ffd700;
-      transform: scale(1.05);
-    }
-
-    .icons {
-      font-size: 40px;
-      margin: 25px 0;
-    }
-  </style>
-</head>
-
-<body>
-  <div class="container">
-
-    <h1>PLACARES EXATOS FIFA</h1>
-    <h2>Jogos Garantidos • Inscrições Limitadas</h2>
-
-    <div class="icons">
-      🎮 ⚽️ 💰
+  <div class="card">
+    <div class="stats">
+      <div class="stat">👥 1.370 membros ativos</div>
+      <div class="stat">💵 R$ 2.100 média mensal</div>
     </div>
-
-    <div class="card">
-      <p class="members">✔️ 1.370 membros ativos</p>
-      <p>✔️ Resultados diários</p>
-      <p>✔️ Gestão profissional</p>
-      <p>✔️ Inscrições limitadas por dia</p>
+    <div class="countdown">
+      Inscrições encerram em <span id="timer">15:00</span>
     </div>
-
-    <div class="card ticker">
-      🔔 Rafael (SP) entrou no grupo agora<br>
-      🔔 Lucas (PR) acabou de se inscrever<br>
-      🔔 André (BA) entrou no canal VIP
-    </div>
-
-    <a class="btn" href="https://t.me/+30Y1fI0TdrRiNzlh" target="_blank">
-      ENTRAR NO GRUPO DO TELEGRAM
-    </a>
-
   </div>
+
+  <div class="card vip">
+    <h3>VIP — ACESSO LIMITADO</h3>
+    <p>Entradas prioritárias • Gestão profissional • Alta precisão</p>
+    <div class="vagas">Vagas restantes: <strong id="vagas">7</strong></div>
+  </div>
+
+  <div class="card">
+    <strong>📢 Pessoas entrando agora</strong>
+    <div class="ticker" id="ticker"></div>
+  </div>
+
+  <div class="card">
+    <strong>✔️ Funciona nas principais plataformas</strong>
+    <div class="platforms">
+      <div class="platform">Bet365</div>
+      <div class="platform">Betano</div>
+    </div>
+  </div>
+
+  <a class="btn" href="https://t.me/+30Y1fI0TdrRiNzlh" target="_blank">
+    ENTRAR NO GRUPO DO TELEGRAM
+  </a>
+
+  <footer>© Placares Exatos FIFA • Conteúdo informativo</footer>
+</div>
+
+<script>
+// 🔊 SOM DISCRETO
+const sound = new Audio("https://assets.mixkit.co/sfx/preview/mixkit-positive-notification-951.mp3");
+sound.volume = 0.25;
+
+// ⏱️ CONTADOR
+let time = 15 * 60;
+setInterval(()=>{
+  let m = Math.floor(time / 60);
+  let s = time % 60;
+  document.getElementById("timer").innerText = ${m}:${s<10?'0'+s:s};
+  if(time>0) time--;
+},1000);
+
+// 👥 ENTRADAS + VAGAS
+let vagas = 7;
+const nomes=["Rafael","Lucas","André","Carlos","Bruno","Diego","Felipe","Matheus","João","Pedro","Renato","Igor"];
+const estados=["SP","RJ","MG","PR","RS","BA","SC","PE","CE","GO"];
+const ticker=document.getElementById("ticker");
+
+setInterval(()=>{
+  const div=document.createElement("div");
+  div.className="entry";
+  div.innerText=`✅ ${nomes[Math.floor(Math.random()*nomes.length)]} (${estados[Math.floor(Math.random()*estados.length)])} entrou agora`;
+  ticker.prepend(div);
+  sound.currentTime=0; sound.play().catch(()=>{});
+  if(ticker.children.length>7) ticker.removeChild(ticker.lastChild);
+
+  if(vagas>1 && Math.random()>.5){
+    vagas--;
+    document.getElementById("vagas").innerText=vagas;
+  }
+},1700);
+</script>
 </body>
 </html>

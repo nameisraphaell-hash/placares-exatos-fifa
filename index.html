@@ -1,26 +1,81 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<title>Teste Black Gold</title>
+  <meta charset="UTF-8">
+  <title>Placares Exatos FIFA | Jogos Garantidos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-body {
-  background: #000 !important;
-  color: gold !important;
-  font-family: Arial, sans-serif;
-}
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css?v=3">
 
-h1 {
-  text-align: center;
-  margin-top: 100px;
-}
-</style>
-
+  <!-- Fonte -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
-<h1>SE ISSO ESTIVER PRETO COM TEXTO DOURADO, ESTÁ OK</h1>
+  <!-- GLOW DE FUNDO -->
+  <div class="gold-glow"></div>
 
+  <!-- SOM PREMIUM -->
+  <audio id="vipSound">
+    <source src="https://assets.mixkit.co/sfx/preview/mixkit-positive-notification-951.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="container">
+
+    <div class="badge">⚠️ ACESSO VIP — VAGAS LIMITADAS</div>
+
+    <h1>
+      PLACARES EXATOS FIFA<br>
+      <span>JOGOS GARANTIDOS</span>
+    </h1>
+
+    <p class="sub">
+      Comunidade privada focada em leitura profissional,<br>
+      gestão e consistência em eSoccer FIFA
+    </p>
+
+    <div class="timer">
+      ⏳ Inscrições encerram em<br>
+      <strong id="countdown">--:--</strong>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <strong id="membros">0</strong>
+        Membros ativos
+      </div>
+      <div class="stat">
+        <strong id="lucro">R$ 0</strong>
+        Média mensal
+      </div>
+    </div>
+
+    <div class="vip">
+      <h2>VERSÃO VIP — FECHANDO VAGAS</h2>
+      <p>Gestão • Disciplina • Leitura de jogo</p>
+    </div>
+
+    <div class="platforms">
+      Compatível com:<br>
+      <b>Bet365 • Betano</b>
+    </div>
+
+    <a class="btn" href="https://t.me/+30Y1fI0TdrRiNzlh" target="_blank">
+      🚀 ENTRAR NO GRUPO DO TELEGRAM
+    </a>
+
+    <div class="footer">
+      Resultados variam conforme gestão e disciplina individual.
+    </div>
+
+  </div>
+
+  <!-- POPUP -->
+  <div class="popup" id="popup"></div>
+
+  <!-- JS -->
+  <script src="script.js?v=3"></script>
 </body>
 </html>
